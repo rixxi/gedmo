@@ -2,34 +2,34 @@ services:
 	sluggable:
 		class: Gedmo\Sluggable\SluggableListener
 		setup:
-			- setAnnotationReader(Doctrine\Common\Annotations\Reader)
+			- setAnnotationReader(@Doctrine\Common\Annotations\Reader)
 		tags: [kdyby.subscriber]
 		autowired: no
 
 	treeable:
 		class: Gedmo\Tree\TreeListener
 		setup:
-			- setAnnotationReader(Doctrine\Common\Annotations\Reader)
+			- setAnnotationReader(@Doctrine\Common\Annotations\Reader)
 		tags: [kdyby.subscriber]
 		autowired: no
 
 	blameable:
 		class: Gedmo\Blameable\BlameableListener
 		setup:
-			- setAnnotationReader(Doctrine\Common\Annotations\Reader)
+			- setAnnotationReader(@Doctrine\Common\Annotations\Reader)
 		tags: [kdyby.subscriber]
 		autowired: no
 
 	timestampable:
 		class: Gedmo\Timestampable\TimestampableListener
 		setup:
-			- setAnnotationReader(Doctrine\Common\Annotations\Reader)
+			- setAnnotationReader(@Doctrine\Common\Annotations\Reader)
 		tags: [kdyby.subscriber]
 		autowired: no
 
 	translatable:
 		class: Gedmo\Translatable\TranslatableListener
 		setup:
-			- setAnnotationReader(Doctrine\Common\Annotations\Reader)
+			- setAnnotationReader(@Doctrine\Common\Annotations\Reader)
 		tags: [kdyby.subscriber]
 		autowired: no
