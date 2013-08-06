@@ -33,10 +33,26 @@ gedmo:
 	translatableLocale: cs_CZ
 	defaultLocale: cs_CZ
 
-# you must add bit type to your doctrine connection
+	# enable all annotations
+	all: on
+	# enable per annotation
+	loggable: on
+	sluggable: on
+	softDeleteable: on
+	sortable: on
+	timestampable: on
+	translatable: on
+	tree: on
+	uploadable: on
+
+# you must add bit type to your doctrine connection and soft-deleteable to filters
 doctrine:
 	types:
 		bit: Doctrine\DBAL\Types\BooleanType
+
+	filters:
+		# without this softDeleteable won't work...            ...probably
+		soft-deleteable: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
 ```
 
 
