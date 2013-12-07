@@ -17,6 +17,23 @@ The best way to install Rixxi/Gedmo is using  [Composer](http://getcomposer.org/
 $ composer require rixxi/gedmo:@dev
 ```
 
+To fix compatibility with Kdyby\Events put this in `composer.json`.
+If you get gist of what should be fixed and how please create pull request for Kdyby\Events. Thanks!
+
+
+```json
+{
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "git@github.com:mishak87/DoctrineExtensions.git"
+		}
+	],
+	"require": {
+		"gedmo/doctrine-extensions": "dev-kdyby_doctrine_compat as @dev",
+	}
+}
+```
 
 Configuration
 ------------
