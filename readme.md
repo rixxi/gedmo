@@ -40,7 +40,6 @@ gedmo:
 		tree: on
 ```
 
-
 ### Softdeleteable
 
 ```yml
@@ -50,3 +49,13 @@ doctrine:
 	filters:
 		soft-deleteable: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
 ```
+
+### Translatable
+
+Translatable uses [Kdyby/Translation](https://github.com/kdyby/translation) translator's locale to set its own locale:
+
+```php
+$definition->addSetup('$service->setTranslatableLocale($this->getService(?)->getLocale())', array('translation.default'));
+```
+
+If you use different translator, pls make some switcher and send pull-request. Thank you.
