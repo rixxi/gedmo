@@ -22,7 +22,7 @@ Add to your `composer.json`:
 	}
 ],
 "require": {
-    "rixxi/gedmo": "@dev"
+	"rixxi/gedmo": "@dev"
 	"gedmo/doctrine-extensions": "dev-kdyby_doctrine_compat as @dev",
 }
 ```
