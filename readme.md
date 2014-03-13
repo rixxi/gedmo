@@ -1,15 +1,16 @@
 Rixxi/Gedmo
-===========================
+===
 
 
 Requirements
-------------
+---
 
-Rixxi/Gedmo requires [Kdyby/Doctrine](https://github.com/kdyby/doctrine)
+- [Kdyby/Doctrine](https://github.com/kdyby/doctrine)
+- [l3pp4rd/DoctrineExtensions](https://github.com/l3pp4rd/DoctrineExtensions)
 
 
 Installation
-------------
+---
 
 The best way to install Rixxi/Gedmo is using  [Composer](http://getcomposer.org/):
 
@@ -18,43 +19,31 @@ $ composer require rixxi/gedmo:@dev
 ```
 
 Configuration
-------------
-
-The best way to install Rixxi/Gedmo is using  [Composer](http://getcomposer.org/):
+---
 
 ```yml
 extensions:
-	gedmo: Rixxi\Gedmo\DI\OrmExtension
-	# you should probably register Kdyby/Doctrine too
-	doctrine: Kdyby\Doctrine\DI\OrmExtension
+	doctrine: Kdyby\Doctrine\DI\OrmExtension # don't forget dependency
+	gedmo: Rixxi\Gedmo\DI\Extension
 
 gedmo:
-	translatableLocale: cs_CZ
-	defaultLocale: cs_CZ
-
-	# enable all annotations
-	all: on
-	# enable per annotation
-	loggable: on
-	sluggable: on
-	softDeleteable: on
-	sortable: on
-	timestampable: on
-	translatable: on
-	tree: on
-	uploadable: on
-
-# you must add bit type to your doctrine connection and soft-deleteable to filters
-doctrine:
-	types:
-		bit: Doctrine\DBAL\Types\BooleanType
-
-	filters:
-		# without this softDeleteable won't work...            ...probably
-		soft-deleteable: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+	extensions:
+		blameable: on
+		loggable: on
+		sluggable: on
+		timestampable: on
+		translatable: on
+		tree: on
 ```
 
 
------
+Softdeleteable
+---
 
-Repository [http://github.com/rixxi/gedmo](http://github.com/rixxi/gedmo).
+```yml
+doctrine:
+	types:
+		bit: Doctrine\DBAL\Types\BooleanType
+	filters:
+		soft-deleteable: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+```
