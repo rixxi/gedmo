@@ -1,19 +1,16 @@
-Rixxi/Gedmo
-===
+# Rixxi/Gedmo
 
 
-Requirements
----
+## Requirements
 
 - [Kdyby/Doctrine](https://github.com/kdyby/doctrine)
 - [l3pp4rd/DoctrineExtensions](https://github.com/l3pp4rd/DoctrineExtensions)
 
 
-Installation
----
+## Installation
 
 The best way to install Rixxi/Gedmo is using [Composer](http://getcomposer.org/).
-Also fixes compatibility with [Kdyby\Events](https://github.com/kdyby/events)
+Also fixes [compatibility issue](https://github.com/Kdyby/Events/pull/34) with [Kdyby\Events](https://github.com/kdyby/events).
 
 Add to your `composer.json`:
 
@@ -31,8 +28,7 @@ Add to your `composer.json`:
 ```
 
 
-Configuration
----
+## Configuration
 
 ```yml
 extensions:
@@ -41,6 +37,7 @@ extensions:
 
 gedmo:
 	extensions:
+		# those are off by default
 		blameable: on
 		loggable: on
 		sluggable: on
@@ -50,8 +47,7 @@ gedmo:
 ```
 
 
-Softdeleteable
----
+### Softdeleteable
 
 ```yml
 doctrine:
