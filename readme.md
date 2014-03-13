@@ -9,14 +9,7 @@
 
 ## Installation
 
-<<<<<<< HEAD
 The best way to install Rixxi/Gedmo is using  [Composer](http://getcomposer.org/):
-=======
-The best way to install Rixxi/Gedmo is using [Composer](http://getcomposer.org/).
-Also fixes [compatibility issue](https://github.com/Kdyby/Events/pull/34) with [Kdyby\Events](https://github.com/kdyby/events).
-
-Add to your `composer.json`:
->>>>>>> readme updated
 
 ```sh
 $ composer require rixxi/gedmo:@dev
