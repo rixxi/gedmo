@@ -1,78 +1,67 @@
-Rixxi/Gedmo
-===========================
+# Rixxi/Gedmo
 
 
-Requirements
-------------
+## Requirements
 
-Rixxi/Gedmo requires [Kdyby/Doctrine](https://github.com/kdyby/doctrine)
+- [Kdyby/Doctrine](https://github.com/kdyby/doctrine)
+- [l3pp4rd/DoctrineExtensions](https://github.com/l3pp4rd/DoctrineExtensions)
 
 
-Installation
-------------
+## Installation
 
-The best way to install Rixxi/Gedmo is using  [Composer](http://getcomposer.org/):
+The best way to install Rixxi/Gedmo is using [Composer](http://getcomposer.org/).
+Also fixes [compatibility issue](https://github.com/Kdyby/Events/pull/34) with [Kdyby\Events](https://github.com/kdyby/events).
+
+Add to your `composer.json`:
 
 ```sh
-$ composer require rixxi/gedmo:@dev
-```
-
-To fix compatibility with Kdyby\Events put this in `composer.json`.
-If you get gist of what should be fixed and how please create pull request for Kdyby\Events. Thanks!
-
-
-```json
-{
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "git@github.com:mishak87/DoctrineExtensions.git"
-		}
-	],
-	"require": {
-		"gedmo/doctrine-extensions": "dev-kdyby_doctrine_compat as @dev",
+"repositories": [
+	{
+		"type": "vcs",
+		"url": "git@github.com:mishak87/DoctrineExtensions.git"
 	}
+],
+"require": {
+	"rixxi/gedmo": "@dev",
+	"gedmo/doctrine-extensions": "dev-kdyby_doctrine_compat as @dev"
 }
 ```
 
-Configuration
-------------
 
-The best way to install Rixxi/Gedmo is using  [Composer](http://getcomposer.org/):
+## Configuration
 
 ```yml
 extensions:
-	gedmo: Rixxi\Gedmo\DI\GedmoExtension
-	# you should probably register Kdyby/Doctrine too
-	doctrine: Kdyby\Doctrine\DI\OrmExtension
+	doctrine: Kdyby\Doctrine\DI\OrmExtension # don't forget dependency
+	gedmo: Rixxi\Gedmo\DI\Extension
 
 gedmo:
-	translatableLocale: cs_CZ
-	defaultLocale: cs_CZ
+	extensions:
+		# those are off by default
+		blameable: on
+		loggable: on
+		sluggable: on
+		timestampable: on
+		translatable: on
+		tree: on
+```
 
-	# enable all annotations
-	all: on
-	# enable per annotation
-	loggable: on
-	sluggable: on
-	softDeleteable: on
-	sortable: on
-	timestampable: on
-	translatable: on
-	tree: on
-	uploadable: on
+### Softdeleteable
 
-# you must add bit type to your doctrine connection and soft-deleteable to filters
+```yml
 doctrine:
 	types:
 		bit: Doctrine\DBAL\Types\BooleanType
-
 	filters:
-		# without this softDeleteable won't work...            ...probably
 		soft-deleteable: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
 ```
 
+### Translatable
 
------
+Translatable uses [Kdyby/Translation](https://github.com/kdyby/translation) translator's locale to set its own locale:
 
-Repository [http://github.com/rixxi/gedmo](http://github.com/rixxi/gedmo).
+```php
+$definition->addSetup('$service->setTranslatableLocale($this->getService(?)->getLocale())', array('translation.default'));
+```
+
+If you use different translator, pls make some switcher and send pull-request. Thank you.
