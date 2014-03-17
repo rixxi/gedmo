@@ -17,7 +17,7 @@ The best way to install Rixxi/Gedmo is using  [Composer](http://getcomposer.org/
 $ composer require rixxi/gedmo:@dev
 ```
 
-Compatibility with Kdyby\Events is nearly [resolved])(https://github.com/Kdyby/Events/pull/34).
+Compatibility with Kdyby\Events is nearly [resolved](https://github.com/Kdyby/Events/pull/34).
 To fix compatibility with Kdyby\Events put this in `composer.json`.
 If you get gist of what should be fixed and how please create pull request for Kdyby\Events. Thanks!
 
