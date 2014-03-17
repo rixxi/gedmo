@@ -42,7 +42,7 @@ The best way to install Rixxi/Gedmo is using  [Composer](http://getcomposer.org/
 
 ```yml
 extensions:
-	gedmo: Rixxi\Gedmo\DI\GedmoExtension
+	gedmo: Rixxi\Gedmo\DI\OrmExtension
 	# you should probably register Kdyby/Doctrine too
 	doctrine: Kdyby\Doctrine\DI\OrmExtension
 
