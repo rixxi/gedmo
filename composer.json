@@ -13,8 +13,10 @@
 		"issues": "https://github.com/rixxi/gedmo"
 	},
 	"require": {
-		"kdyby/doctrine": "@dev",
-		"gedmo/doctrine-extensions": "@dev"
+		"nette/nette": "~2.1",
+		"kdyby/events": "~2.1",
+		"kdyby/doctrine": "~2.0,~1.0",
+		"gedmo/doctrine-extensions": "~2.2"
 	},
 	"autoload": {
 		"psr-0": {
