@@ -15,7 +15,7 @@
 	"require": {
 		"nette/nette": "~2.1",
 		"kdyby/events": "~2.1",
-		"kdyby/doctrine": "~2.0,~1.0",
+		"kdyby/doctrine": "~2.0|~1.0",
 		"gedmo/doctrine-extensions": "~2.2"
 	},
 	"autoload": {
