@@ -1,7 +1,7 @@
 {
 	"name": "rixxi/gedmo",
 	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
-    "description": "Gedmo Doctrine Extensions integration into Nette Framework using Kdyby/Doctrine",
+	"description": "Gedmo Doctrine Extensions integration into Nette Framework using Kdyby/Doctrine",
 	"authors": [
 		{
 			"name": "Michal Gebauer",
@@ -13,8 +13,8 @@
 		"issues": "https://github.com/rixxi/gedmo"
 	},
 	"require": {
-        "kdyby/doctrine": "@dev",
-        "gedmo/doctrine-extensions": "@dev"
+		"kdyby/doctrine": "@dev",
+		"gedmo/doctrine-extensions": "@dev"
 	},
 	"autoload": {
 		"psr-0": {
