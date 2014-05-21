@@ -14,7 +14,7 @@ Installation
 The best way to install Rixxi/Gedmo is using  [Composer](http://getcomposer.org/):
 
 ```sh
-$ composer require rixxi/gedmo:@dev
+$ composer require rixxi/gedmo
 ```
 
 Configuration
