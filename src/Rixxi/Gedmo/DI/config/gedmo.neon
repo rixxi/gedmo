@@ -1,4 +1,9 @@
 services:
+	softDeleteable:
+		class: Gedmo\SoftDeleteable\SoftDeleteableListener
+		tags: [kdyby.subscriber]
+		autowired: no
+
 	sluggable:
 		class: Gedmo\Sluggable\SluggableListener
 		setup:
