@@ -23,7 +23,7 @@ class OrmExtension extends CompilerExtension implements Kdyby\Doctrine\DI\IEntit
 		'sortable' => FALSE,
 		'timestampable' => FALSE,
 		'translatable' => FALSE,
-		'tree' => FALSE,
+		'treeable' => FALSE,
 		'uploadable' => FALSE,
 	);
 
@@ -34,7 +34,7 @@ class OrmExtension extends CompilerExtension implements Kdyby\Doctrine\DI\IEntit
 		'sortable',
 		'timestampable',
 		'translatable',
-		'tree',
+		'treeable',
 		'uploadable',
 	);
 
@@ -46,7 +46,7 @@ class OrmExtension extends CompilerExtension implements Kdyby\Doctrine\DI\IEntit
 		$annotations = array(
 			'loggable',
 			'translatable',
-			'tree',
+			'treeable',
 		);
 
 		$path = realpath(__DIR__ . '/../../../../../../gedmo/doctrine-extensions/lib/Gedmo');
