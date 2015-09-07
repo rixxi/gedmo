@@ -38,3 +38,10 @@ services:
 			- setAnnotationReader(@Doctrine\Common\Annotations\Reader)
 		tags: [kdyby.subscriber]
 		autowired: no
+
+	sortable:
+		class: Gedmo\Sortable\SortableListener
+		setup:
+			- setAnnotationReader(@Doctrine\Common\Annotations\Reader)
+		tags: [kdyby.subscriber]
+		autowired: no
