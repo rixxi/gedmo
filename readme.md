@@ -41,7 +41,7 @@ gedmo:
 	sortable: on
 	timestampable: on
 	translatable: on
-	tree: on
+	treeable: on
 	uploadable: on
 
 # you must add bit type to your doctrine connection and soft-deleteable to filters
