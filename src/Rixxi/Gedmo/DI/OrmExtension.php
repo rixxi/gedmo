@@ -44,18 +44,17 @@ class OrmExtension extends CompilerExtension implements Kdyby\Doctrine\DI\IEntit
 		$config = $this->getValidatedConfig();
 
 		$annotations = array(
-			'loggable',
-			'translatable',
-			'treeable',
+			'loggable' => 'Loggable',
+			'translatable' => 'Translatable',
+			'treeable' => 'Treeable',
 		);
 
 		$path = realpath(__DIR__ . '/../../../../../../gedmo/doctrine-extensions/lib/Gedmo');
 
 		$mappings = array();
-		foreach ($annotations as $annotation) {
+		foreach ($annotations as $annotation => $namespace) {
 			if ($config['all'] || $config[$annotation]) {
-				$name = ucfirst($annotation);
-				$mappings["Gedmo\\$name\\Entity"] = "$path/$name/Entity";
+				$mappings["Gedmo\\$namespace\\Entity"] = "$path/$namespace/Entity";
 			}
 		}
 
