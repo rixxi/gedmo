@@ -54,6 +54,9 @@ class OrmExtension extends CompilerExtension implements Kdyby\Doctrine\DI\IEntit
 		$mappings = array();
 		foreach ($annotations as $annotation) {
 			if ($config['all'] || $config[$annotation]) {
+				if ($annotation === 'treeable'){
+					$annotation = 'tree';
+				}
 				$name = ucfirst($annotation);
 				$mappings["Gedmo\\$name\\Entity"] = "$path/$name/Entity";
 			}
