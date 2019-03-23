@@ -2,6 +2,7 @@
 
 namespace Rixxi\Gedmo\DI;
 
+use Gedmo\DoctrineExtensions;
 use Kdyby;
 use Nette\DI\CompilerExtension;
 use Nette\Utils\Validators;
@@ -11,7 +12,10 @@ use Nette;
 class OrmExtension extends CompilerExtension implements Kdyby\Doctrine\DI\IEntityProvider
 {
 
-	private $defaults = array(
+	/**
+	 * @var array
+	 */
+	private $defaults = [
 		'translatableLocale' => 'cs_CZ',
 		'defaultLocale'	=> 'cs_CZ',
 		// enable all
@@ -25,9 +29,12 @@ class OrmExtension extends CompilerExtension implements Kdyby\Doctrine\DI\IEntit
 		'translatable' => FALSE,
 		'treeable' => FALSE,
 		'uploadable' => FALSE,
-	);
+	];
 
-	private $annotations = array(
+	/**
+	 * @var array
+	 */
+	private $annotations = [
 		'loggable',
 		'sluggable',
 		'softDeleteable',
@@ -36,22 +43,27 @@ class OrmExtension extends CompilerExtension implements Kdyby\Doctrine\DI\IEntit
 		'translatable',
 		'treeable',
 		'uploadable',
-	);
+	];
 
-
-	public function getEntityMappings()
+	/**
+	 * @return array
+	 * @throws Nette\Utils\AssertionException
+	 * @throws \ReflectionException
+	 */
+	public function getEntityMappings(): array
 	{
 		$config = $this->getValidatedConfig();
 
-		$annotations = array(
+		$annotations = [
 			'loggable' => 'Loggable',
 			'translatable' => 'Translatable',
 			'treeable' => 'Tree',
-		);
+		];
 
-		$path = realpath(__DIR__ . '/../../../../../../gedmo/doctrine-extensions/lib/Gedmo');
+		$reflection = new \ReflectionClass(DoctrineExtensions::class);
+		$path = dirname($reflection->getFileName());
 
-		$mappings = array();
+		$mappings = [];
 		foreach ($annotations as $annotation => $namespace) {
 			if ($config['all'] || $config[$annotation]) {
 				$mappings["Gedmo\\$namespace\\Entity"] = "$path/$namespace/Entity";
@@ -61,7 +73,10 @@ class OrmExtension extends CompilerExtension implements Kdyby\Doctrine\DI\IEntit
 		return $mappings;
 	}
 
-	public function loadConfiguration()
+	/**
+	 * @throws Nette\Utils\AssertionException
+	 */
+	public function loadConfiguration(): void
 	{
 		$config = $this->getValidatedConfig();
 
@@ -69,8 +84,8 @@ class OrmExtension extends CompilerExtension implements Kdyby\Doctrine\DI\IEntit
 
 		$builder = $this->getContainerBuilder();
 		$translatable = $builder->getDefinition($this->prefix('gedmo.translatable'));
-		$translatable->addSetup('setTranslatableLocale', array($config['translatableLocale']));
-		$translatable->addSetup('setDefaultLocale', array($config['defaultLocale']));
+		$translatable->addSetup('setTranslatableLocale', [$config['translatableLocale']]);
+		$translatable->addSetup('setDefaultLocale', [$config['defaultLocale']]);
 
 		foreach ($this->annotations as $annotation) {
 			if ($config['all'] || $config[$annotation]) {
@@ -81,7 +96,9 @@ class OrmExtension extends CompilerExtension implements Kdyby\Doctrine\DI\IEntit
 		}
 	}
 
-
+	/**
+	 * @throws Nette\Utils\AssertionException
+	 */
 	public function beforeCompile()
 	{
 		$eventsExt = NULL;
@@ -97,11 +114,11 @@ class OrmExtension extends CompilerExtension implements Kdyby\Doctrine\DI\IEntit
 		}
 	}
 
-
 	/**
 	 * @return array
+	 * @throws Nette\Utils\AssertionException
 	 */
-	private function getValidatedConfig()
+	private function getValidatedConfig(): array
 	{
 		$config = $this->getConfig($this->defaults);
 
